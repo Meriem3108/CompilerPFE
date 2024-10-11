@@ -13,9 +13,9 @@ import java.nio.file.Paths;
 @RequestMapping("/api")
 public class FileController {
 
-    private static final String TEMPLATE_COMPILER_PATH = "C:\\Users\\merie\\OneDrive\\Bureau\\tests\\testSenarios\\Compilateurtraducteur\\templatefinal2.exe";
-    private static final String SCENARIO_COMPILER_PATH = "C:\\Users\\merie\\OneDrive\\Bureau\\tests\\testSenarios\\Compilateurtraducteur\\testFinal.exe";
-    //private static final String TEMPLATE_COMPILER_PATH = "C:\\Users\\merie\\OneDrive\\Bureau\\youssef\\TestComp15.exe";
+     private static final String TEMPLATE_COMPILER_PATH = System.getenv("TEMPLATE_COMPILER_PATH");
+    private static final String SCENARIO_COMPILER_PATH = System.getenv("SCENARIO_COMPILER_PATH");
+    
     @PostMapping("/uploadTemplate")
     public ResponseEntity<String> handleTemplateUpload(@RequestParam("file") MultipartFile file) {
         return handleFileUpload(file, TEMPLATE_COMPILER_PATH);
