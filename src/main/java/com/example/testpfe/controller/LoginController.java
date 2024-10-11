@@ -48,7 +48,7 @@
 ////    @GetMapping("/home")
 ////    public String hhh(){
 ////
-////        return "/pages/landing_page";
+////        return "landing_page";
 ////    }
 //    @GetMapping("/traduction")
 //    public String traduction(){
