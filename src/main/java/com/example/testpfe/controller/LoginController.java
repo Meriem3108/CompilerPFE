@@ -25,13 +25,13 @@
 //
 ////    @RequestMapping("/home")
 ////    public String loginSubmit(){
-////        return "/pages/landing_page";
+////        return "landing_page";
 ////    }
 //@RequestMapping("/home")
 //public String loginSubmit(Model model){
 //    List<User> users = userService.findAllUsers();
 //    model.addAttribute("users", users); // Ajouter les utilisateurs au modèle
-//    return "/pages/landing_page";
+//    return "landing_page";
 //}
 //
 //    @GetMapping("/users")
@@ -143,7 +143,7 @@ public class LoginController {
     public String loginSubmit(Model model) {
         List<User> users = userService.findAllUsers();
         model.addAttribute("users", users); // Ajouter les utilisateurs au modèle
-        return "/pages/landing_page";
+        return "landing_page";
     }
 */
 @RequestMapping("/home")
@@ -155,7 +155,7 @@ public String loginSubmit(Model model) {
     model.addAttribute("username", currentUsername);
 
     // Retourner la vue
-    return "/pages/landing_page";
+    return "landing_page";
 
 
 }
