@@ -26,5 +26,7 @@ COPY --from=build /app/target/testpfe-0.0.1-SNAPSHOT.jar /testpfe-0.0.1.jar
 COPY templatefinal2.exe /app/templatefinal2.exe
 COPY testFinal.exe /app/testFinal.exe
 
+EXPOSE 80
+
 # Entry point for running the application
 ENTRYPOINT ["java", "-jar", "/testpfe-0.0.1.jar"]
