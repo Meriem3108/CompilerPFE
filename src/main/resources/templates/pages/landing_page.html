@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/dashboard}">
+<head>
+    <meta charset="UTF-8">
+    <title>FIS</title>
+    <style>
+        .centered-image {
+            max-width: 80%;
+            height: auto;
+        }
+        .centered-image2 {
+            max-width: 120%;
+            height: auto;
+        }
+
+        /* Style pour centrer et réduire la taille de l'image vf */
+        .image-container {
+            display: flex;
+            justify-content: center; /* Centrer horizontalement */
+            align-items: center; /* Centrer verticalement */
+            height: 300px; /* Hauteur de la div */
+        }
+
+        .image-container img {
+            max-width: 50%; /* Réduction de la taille de l'image */
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+<div class="main-content container-fluid" layout:fragment="content">
+    <div class="page-title">
+        <h3>Dashboard</h3>
+        <p class="text-subtitle text-muted">A good dashboard to display your statistics</p>
+    </div>
+    <section class="section">
+        <div class="row mb-2">
+            <div class="col-12 col-md-3">
+                <div class="card card-statistic">
+                    <div class="card-body p-0">
+                        <div class="d-flex flex-column">
+                            <div class='px-3 py-3 d-flex justify-content-between'>
+                                <h3 class='card-title'>WAS PROCESSED ON OUR ASSET MANAGEMENT TECHNOLOGY</h3>
+                                <div class="card-right d-flex align-items-center">
+                                    <p>$50 </p><p>T</p>
+                                </div>
+                            </div>
+                            <div class="chart-wrapper">
+                                <canvas id="canvas1" style="height:100px !important"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-3">
+                <div class="card card-statistic">
+                    <div class="card-body p-0">
+                        <div class="d-flex flex-column">
+                            <div class='px-3 py-3 d-flex justify-content-between'>
+                                <h3 class='card-title'>We enable 95% of the worlds best banks</h3>
+                                <div class="card-right d-flex align-items-center">
+                                    <p>95% </p>
+                                </div>
+                            </div>
+                            <div class="chart-wrapper">
+                                <canvas id="canvas2" style="height:100px !important"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-3">
+                <div class="card card-statistic">
+                    <div class="card-body p-0">
+                        <div class="d-flex flex-column">
+                            <div class='px-3 py-3 d-flex justify-content-between'>
+                                <h3 class='card-title'>moved monthly by FIS</h3>
+                                <div class="card-right d-flex align-items-center">
+                                    <p>$1T +  </p>
+                                </div>
+                            </div>
+                            <div class="chart-wrapper">
+                                <canvas id="canvas3" style="height:100px !important"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-3">
+                <div class="card card-statistic">
+                    <div class="card-body p-0">
+                        <div class="d-flex flex-column">
+                            <div class='px-3 py-3 d-flex justify-content-between'>
+                                <h3 class='card-title'>Clients</h3>
+                                <div class="card-right d-flex align-items-center">
+                                    <p>15,000  </p>
+                                </div>
+                            </div>
+                            <div class="chart-wrapper">
+                                <canvas id="canvas4" style="height:100px !important"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4 col-12 d-flex justify-content-center align-items-center">
+                                <img src="/images/ad.jpeg" alt="Solutions" class="centered-image2">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h4 class="card-title">Verifix-FixSimulator</h4>
+                        <div class="d-flex ">
+                            <i data-feather="download"></i>
+                        </div>
+                    </div>
+                    <div class="card-body px-0 pb-0">
+                        <div class="table-responsive image-container">
+                            <img src="/images/vf.png" alt="Solutions">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card ">
+                    <div class="card-header">
+                        <h4>Les solutions financières proposées par FIS</h4>
+                    </div>
+                    <div class="card-body">
+                        <div id="radialBars"></div>
+                        <div class="text-center mb-5">
+                            <img src="/images/solutions.jpg" alt="Solutions" class="centered-image">
+                        </div>
+                    </div>
+                </div>
+                <div class="card widget-todo">
+                    <div class="card-header border-bottom d-flex justify-content-between align-items-center">
+                        <h4 class="card-title d-flex">
+                            <i class='bx bx-check font-medium-5 pl-25 pr-75'></i>Traductions par Jour
+                        </h4>
+                    </div>
+                    <div class="card-body px-0 py-1">
+                        <table class='table table-borderless'>
+                            <tr>
+                                <td class='col-3'>Templates</td>
+                                <td class='col-6'>
+                                    <div class="progress progress-info">
+                                        <div class="progress-bar" role="progressbar" th:style="'width: ' + ${translatedTemplatesPercentage} + '%'"
+                                             aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </td>
+                                <td class='col-3 text-center' th:text="${translatedTemplatesPercentage} + '%'">0%</td>
+                            </tr>
+                            <tr>
+                                <td class='col-3'>Scénarios</td>
+                                <td class='col-6'>
+                                    <div class="progress progress-success">
+                                        <div class="progress-bar" role="progressbar" th:style="'width: ' + ${translatedScenariosPercentage} + '%'"
+                                             aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </td>
+                                <td class='col-3 text-center' th:text="${translatedScenariosPercentage} + '%'">0%</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guide d'Utilisation - Traducteur Verifix FixSimulator</title>
+  <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+  <link rel="shortcut icon" th:href="@{/images/FIS.png}" type="image/x-icon">
+  <link rel="stylesheet" th:href="@{/css/app.css}">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    .container {
+      margin-top: 30px;
+      max-width: 900px;
+    }
+    .section-title {
+      color: #007bff;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    .section-content {
+      margin-bottom: 40px;
+    }
+    .section-content p {
+      margin-bottom: 15px;
+    }
+    .step {
+      background-color: #e9ecef;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+    .step h4 {
+      color: #007bff;
+    }
+  </style>
+</head>
+<body>
+<div id="app">
+  <!-- Inclusion de la Sidebar -->
+  <span th:replace="fragments/sidebar :: sidebar"></span>
+
+  <!-- Inclusion du Header -->
+  <div id="main">
+    <span th:replace="fragments/header :: header"></span>
+
+    <div class="main-content container-fluid" layout:fragment="content">
+      <div class="container">
+        <h1 class="text-center">Guide d'Utilisation</h1>
+        <p class="text-center">Découvrez comment utiliser notre application de traduction étape par étape.</p>
+
+        <!-- Section: Création de compte -->
+        <div class="section-content">
+          <h2 class="section-title">1. Création de Compte</h2>
+          <div class="step">
+            <h4>Étape 1: Inscription</h4>
+            <p>Accédez à la page d'inscription et remplissez le formulaire avec votre nom d'utilisateur et mot de passe.</p>
+            <p>Vous pouvez également vous connecter rapidement via Facebook ou GitHub en utilisant les boutons disponibles.</p>
+          </div>
+          <div class="step">
+            <h4>Étape 2: Connexion</h4>
+            <p>Une fois le compte créé, accédez à la page de connexion. Saisissez votre identifiant et mot de passe pour vous connecter à l'application. Utilisez l'option "Se souvenir de moi" pour simplifier vos futures connexions.</p>
+          </div>
+        </div>
+
+        <!-- Section: Tableau de bord -->
+        <div class="section-content">
+          <h2 class="section-title">2. Tableau de Bord</h2>
+          <div class="step">
+            <h4>Étape 1: Accès au Tableau de Bord</h4>
+            <p>Une fois connecté, vous accédez au tableau de bord. Ce dernier affiche des statistiques et des informations importantes concernant votre compte et vos fichiers à traduire.</p>
+          </div>
+          <div class="step">
+            <h4>Étape 2: Navigation dans le Tableau de Bord</h4>
+            <p>Depuis le tableau de bord, vous pouvez gérer vos fichiers, accéder à la section de traduction, et visualiser des statistiques sur vos traductions passées.</p>
+          </div>
+        </div>
+
+        <!-- Section: Traduction de Fichiers -->
+        <div class="section-content">
+          <h2 class="section-title">3. Traduction de Fichiers</h2>
+          <div class="step">
+            <h4>Étape 1: Importer un Fichier XML</h4>
+            <p>Accédez à la section de traduction et importez un fichier XML de type template ou scénario en cliquant sur le bouton "Importer". Le fichier sera affiché dans une boîte de texte pour prévisualisation avant la traduction.</p>
+          </div>
+          <div class="step">
+            <h4>Étape 2: Lancer la Traduction</h4>
+            <p>Après avoir importé votre fichier, cliquez sur le bouton "Traduire" pour lancer le processus de traduction via notre système. La traduction sera générée en quelques secondes.</p>
+          </div>
+          <div class="step">
+            <h4>Étape 3: Télécharger le Fichier Traduit</h4>
+            <p>Une fois la traduction terminée, le fichier traduit sera affiché dans une zone de texte. Cliquez sur "Télécharger" pour enregistrer le fichier traduit sur votre appareil.</p>
+          </div>
+        </div>
+
+        <!-- Section: Conseil -->
+        <div class="section-content">
+          <h2 class="section-title">Conseils Utiles</h2>
+          <div class="step">
+            <p>Assurez-vous que vos fichiers XML sont bien structurés avant de les importer dans l'application pour éviter les erreurs de traduction.</p>
+            <p>Utilisez l'option "Aperçu" après l'importation pour vérifier le contenu du fichier avant de le soumettre à la traduction.</p>
+          </div>
+        </div>
+
+        <!-- Section: Assistance -->
+        <div class="section-content">
+          <h2 class="section-title">Besoin d'Aide ?</h2>
+          <p>Si vous rencontrez des problèmes ou avez des questions, veuillez consulter notre <a href="#">page d'assistance</a> ou contactez notre support technique.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Inclusion du Footer -->
+    <span th:replace="fragments/footer :: footer"></span>
+  </div>
+</div>
+
+<script th:src="@{/js/feather.min.js}"></script>
+<script th:src="@{/js/app.js}"></script>
+<script th:src="@{/js/main.js}"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

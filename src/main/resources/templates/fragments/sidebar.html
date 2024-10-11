@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="sidebar" class='active' th:fragment="sidebar"><!--sidebar-->
+    <div class="sidebar-wrapper active">
+        <div class="sidebar-header">
+            <img th:src="@{/images/FIS.png}" style="width:150px; height:auto;" class='mb-4'>
+        </div>
+        <div class="sidebar-menu">
+            <ul class="menu">
+
+
+                <li class='sidebar-title'>Main Menu</li>
+
+
+
+                <li class="sidebar-item active ">
+                    <a href="index.html" class='sidebar-link'>
+                        <i data-feather="home" width="20"></i>
+                        <span>Dashboard</span>
+                    </a>
+
+                </li>
+
+
+
+
+                <li class="sidebar-item  has-sub">
+                    <a href="#" class='sidebar-link'>
+                        <i data-feather="triangle" width="20"></i>
+                        <span>guide</span>
+                    </a>
+
+                    <ul class="submenu ">
+
+                        <li>
+                            <a th:href="@{/guide}">guide
+                            </a>
+                        </li>
+
+
+
+                    </ul>
+
+                </li>
+
+                <li class="sidebar-item  has-sub">
+                    <a href="#" class='sidebar-link'>
+                        <i data-feather="briefcase" width="20"></i>
+                        <span>Traduction</span>
+                    </a>
+
+                    <ul class="submenu ">
+
+                        <li>
+                            <a th:href="@{/traduction}">Traduire Template</a>
+
+                        </li>
+                        <li>
+                            <a th:href="@{/traductionscenario}">Traduire Scenario</a>
+
+                        </li>
+
+
+                    </ul>
+
+                </li>
+
+                <li class="sidebar-item  has-sub">
+                    <a href="#" class='sidebar-link'>
+                        <i data-feather="file-plus" width="20"></i>
+                        <span>Datatable</span>
+                    </a>
+                    <ul class="submenu ">
+
+
+                        <li>
+                            <a th:href="@{/users}">Users</a>
+                        </li>
+
+
+
+                    </ul>
+
+
+                </li>
+
+
+                <li class="sidebar-item  has-sub">
+                    <a href="#" class='sidebar-link'>
+                        <i data-feather="briefcase" width="20"></i>
+                        <span>Extra Components</span>
+                    </a>
+
+                    <ul class="submenu ">
+
+                        <li>
+                            <a th:href="@{/users}">USERS</a>
+                        </li>
+
+
+                    </ul>
+
+                </li>
+
+
+                <li class='sidebar-title'>Account</li>
+
+
+
+                <li class="sidebar-item  has-sub">
+                    <a href="#" class='sidebar-link'>
+                        <i data-feather="user" width="20"></i>
+                        <span>Authentication</span>
+                    </a>
+
+                    <ul class="submenu ">
+
+                        <li>
+                            <a href="auth-login.html">Login</a>
+                        </li>
+
+                        <li>
+                            <a th:href="@{/register}">Register</a>
+                        </li>
+
+                    </ul>
+
+                </li>
+
+
+
+
+                <li class="sidebar-item  has-sub">
+                    <a href="#" class='sidebar-link'>
+                        <i data-feather="alert-circle" width="20"></i>
+                        <span>Errors</span>
+                    </a>
+
+                    <ul class="submenu ">
+
+                        <li>
+                            <a href="error-403.html">403</a>
+                        </li>
+
+                        <li>
+                            <a href="error-404.html">404</a>
+                        </li>
+
+                        <li>
+                            <a href="error-500.html">500</a>
+                        </li>
+
+                    </ul>
+
+                </li>
+
+
+
+
+            </ul>
+        </div>
+        <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
+    </div>
+</div>
+</body>
+</html>

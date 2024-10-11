@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>User Profile</title>
+  <link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+<body>
+<div class="container">
+  <h1>Profile de l'utilisateur</h1>
+  <div class="profile-info">
+    <!-- Affichage du nom d'utilisateur -->
+    <p><strong>Nom d'utilisateur:</strong> <span th:text="${username}"></span></p>
+
+    <!-- Image de profil par défaut -->
+    <img src="/images/default-profile.png" alt="Default Profile Image" class="profile-image">
+  </div>
+</div>
+</body>
+</html>

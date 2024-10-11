@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traduction Template</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+    <link rel="shortcut icon" th:href="@{/images/FIS.png}" type="image/x-icon">
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+        }
+        #app {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .card {
+            margin-top: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .card-header {
+            background-color: #4682b4;
+            color: white;
+            padding: 10px 20px;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            width: 100%;
+            text-align: center;
+        }
+        .card-body {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+        textarea {
+            width: 100%;
+            max-width: 500px;
+            height: 200px;
+            background-color: #f0f8ff;
+            color: #333;
+            border: 2px solid #4682b4;
+            border-radius: 8px;
+            padding: 10px;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        textarea::placeholder {
+            color: #999;
+            text-align: center;
+            font-size: 18px;
+        }
+        .styled-button {
+            background-color: #4682b4;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s, box-shadow 0.3s;
+            margin: 5px;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+            display: block;
+            width: 100%;
+            max-width: 200px;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .styled-button:hover {
+            background-color: #5a9bd3;
+            box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2);
+        }
+        .styled-button:active {
+            background-color: #3b6f91;
+            box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.2);
+        }
+        .header, .footer {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <span th:replace="fragments/sidebar :: sidebar"></span>
+    <div id="main">
+        <span th:replace="fragments/header :: header"></span>
+        <div class="main-content container-fluid" layout:fragment="content">
+            <div id="translation-page" class="header">
+                <h1>Translation Page - Templates</h1>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <h3 class='card-heading p-1 pl-3'>Templates</h3>
+            </div>
+            <div class="card-body">
+                <form id="upload-form" enctype="multipart/form-data">
+                    <input type="file" id="template-file-input" name="file" style="display: none;" />
+                    <button type="button" class="styled-button" id="import-template-btn">Importer Template</button>
+                    <textarea id="codeArea" rows="10" cols="50" placeholder="Template content will appear here..."></textarea>
+                    <button type="button" class="styled-button" id="translate-btn">Traduire</button>
+                    <textarea id="outputArea" rows="10" cols="50" placeholder="Translation result will appear here..."></textarea>
+                    <button type="button" class="styled-button" id="download-btn">Télécharger</button>
+                </form>
+            </div>
+        </div>
+        <span th:replace="fragments/footer :: footer"></span>
+    </div>
+</div>
+<script>
+    document.getElementById('import-template-btn').addEventListener('click', function() {
+        document.getElementById('template-file-input').click();
+    });
+    document.getElementById('template-file-input').addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const content = e.target.result;
+                document.getElementById('codeArea').value = content;
+                alert('Template imported successfully: ' + file.name);
+            };
+            reader.onerror = function(e) {
+                console.error('Error reading file:', e);
+            };
+            reader.readAsText(file);
+        } else {
+            alert('No file selected.');
+        }
+    });
+    document.getElementById('translate-btn').addEventListener('click', function() {
+        const form = document.getElementById('upload-form');
+        const formData = new FormData(form);
+        fetch('/api/uploadTemplate', {
+            method: 'POST',
+            body: formData,
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('outputArea').value = data;
+                alert('Translation completed successfully.');
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error during translation.');
+            });
+    });
+    document.getElementById('download-btn').addEventListener('click', function() {
+        downloadTranslatedContent('outputArea', 'translated_template.xml');
+    });
+    function downloadTranslatedContent(areaId, filename) {
+        const content = document.getElementById(areaId).value;
+        const blob = new Blob([content], { type: 'text/plain' });
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+    }
+</script>
+<script th:src="@{/js/feather.min.js}"></script>
+<script th:src="@{/js/app.js}"></script>
+<script th:src="@{/js/main.js}"></script>
+</body>
+</html>
+rd
